@@ -127,17 +127,17 @@ const names = {
 const abilities = {
 	High: [
 		// "Strength"
-		["Powerful", "Brawny", "As strong as an ox"],
+		["Very Powerful", "Very Brawny", "As strong as an ox"],
 		// "Dexterity"
-		["Lithe", "Agile", "Graceful"],
+		["Very Lithe", "Very Agile", "Very Graceful"],
 		// "Constitution"
-		["Hardy", "Hale", "Healthy"],
+		["Very Hardy", "Very Durable", "Very Healthy"],
 		// "Intelligence"
-		["Studious", "Learned", "Inquisitive"],
+		["Very Studious", "Very Learned", "Very Inquisitive"],
 		// "Wisdom"
-		["Perceptive", "Spiritual", "Insightful"],
+		["Very Perceptive", "Very Spiritual", "Very Insightful"],
 		// "Charisma"
-		["Persuasive", "Forceful", "A born Leader"],
+		["Very Persuasive", "Very Forceful", "A natural born leader"],
 	],
 	Low: [
 		// "Strength"
@@ -145,9 +145,9 @@ const abilities = {
 		// "Dexterity"
 		["Clumsy", "Fumbling"],
 		// "Constitution"
-		["Sickly", "Pale"],
+		["Sickly", "Weak"],
 		// "Intelligence"
-		["Dim-witted", "slow"],
+		["Dim-witted", "Dumb"],
 		// "Wisdom"
 		["Oblivious", "Absentminded"],
 		// "Charisma"
@@ -206,7 +206,7 @@ class NPC {
     }
 
     toString() {
-    	let out = `${this.name} is a ${this.sex} ${this.race}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()} and ${this.abilities[1].toLowerCase()}.`
+    	let out = `${this.name} is a ${this.sex} ${this.race}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}.`
     	return out
     }
     
