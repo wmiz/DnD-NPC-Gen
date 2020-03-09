@@ -124,6 +124,38 @@ const names = {
 
 }
 
+const abilities = {
+	High: [
+		// "Strength"
+		["Powerful", "Brawny", "As strong as an ox"],
+		// "Dexterity"
+		["Lithe", "Agile", "Graceful"],
+		// "Constitution"
+		["Hardy", "Hale", "Healthy"],
+		// "Intelligence"
+		["Studious", "Learned", "Inquisitive"],
+		// "Wisdom"
+		["Perceptive", "Spiritual", "Insightful"],
+		// "Charisma"
+		["Persuasive", "Forceful", "A born Leader"],
+	],
+	Low: [
+		// "Strength"
+		["Feeble", "Scrawny"],
+		// "Dexterity"
+		["Clumsy", "Fumbling"],
+		// "Constitution"
+		["Sickly", "Pale"],
+		// "Intelligence"
+		["Dim-witted", "slow"],
+		// "Wisdom"
+		["Oblivious", "Absentminded"],
+		// "Charisma"
+		["Dull", "Boring"],
+	]
+	
+}
+
 // Generates an NPC with the following traits:
 // Sex
 // Race
@@ -143,6 +175,7 @@ class NPC {
         this.race = this.getRace();
         this.name = this.getName(this.race, this.sex)
         this.appearance = this.getAppearance();
+        this.abilities = this.getAbilities();
 	}
 
 	getAppearance() {
@@ -161,8 +194,19 @@ class NPC {
     	return this.getTrait(names["First"][race][sex]) + " " + this.getTrait(names["Last"][race])
     }
 
+    getAbilities() {
+    	return [this.getTrait(abilities["High"]), this.getTrait(abilities["Low"])]
+    }
+    getPronoun() {
+    	if (this.sex == "Male") {
+    		return "He"
+    	} else {
+    		return "She"
+    	}
+    }
+
     toString() {
-    	let out = `${this.name} is a ${this.sex} ${this.race}`
+    	let out = `${this.name} is a ${this.sex} ${this.race}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()} and ${this.abilities[1].toLowerCase()}.`
     	return out
     }
     
