@@ -35,7 +35,7 @@ const races = [
     "Halfling",
     "Human",
     "Dragonborn",
-    // "Gnome",
+    "Gnome",
     // "Half-Elf",
     // "Half-Orc",
     // "Tiefling"
@@ -424,7 +424,73 @@ const names = {
 			"Pious", 
 			"Shieldbiter", 
 			"Zealous"
-		]
+		],
+		Gnome: {
+			Female: [
+				"Bimpnottin", 
+				"Breena", 
+				"Caramip", 
+				"Carlin", 
+				"Donella", 
+				"Duvamil", 
+				"Ella", 
+				"Ellyjobell", 
+				"Ellywick", 
+				"Lilli", 
+				"Loopmottin", 
+				"Lorilla", 
+				"Mardnab", 
+				"Nissa", 
+				"Nyx", 
+				"Oda", 
+				"Orla", 
+				"Roywyn", 
+				"Shamil", 
+				"Tana", 
+				"Waywocket", 
+				"Zanna"
+			],
+			Male: [
+				"Alston", 
+				"Alvyn", 
+				"Boddynock", 
+				"Brocc", 
+				"Burgell", 
+				"Dimble", 
+				"Eldon", 
+				"Erky", 
+				"Fonkin", 
+				"Frug", 
+				"Gerbo", 
+				"Gimble", 
+				"Glim", 
+				"Jebeddo", 
+				"Kellen", 
+				"Namfoodle", 
+				"Orryn", 
+				"Roondar", 
+				"Seebo", 
+				"Sindri", 
+				"Warryn", 
+				"Wrenn", 
+				"Zook"
+			]
+		},
+		GnomeNicknames: [
+			"Aleslosh", 
+			"Ashhearth", 
+			"Badger", 
+			"Cloak", 
+			"Doublelock", 
+			"Filchbatter", 
+			"Fnipper", 
+			"Ku", 
+			"Nim", 
+			"Oneshoe", 
+			"Pock", 
+			"Sparklegem", 
+			"Stumbleduck"
+		],
 
 	},
 	Last: {
@@ -550,6 +616,19 @@ const names = {
 			"Turnuroth", 
 			"Verthisathurgiesh", 
 			"Yarjerit"
+		],
+		Gnome: [
+			"Beren", 
+			"Daergel", 
+			"Folkor", 
+			"Garrick", 
+			"Nackle", 
+			"Murnig", 
+			"Ningel", 
+			"Raulnor", 
+			"Scheppen", 
+			"Timbers", 
+			"Turen"
 		]
 	}
 
@@ -656,7 +735,11 @@ class NPC {
 		// Young dragonborns have different first names
     	} else if (race == "Dragonborn" && age < 15) {
     		return this.getTrait(names["First"]["Dragonbornchild"]) + " " + this.getTrait(names["Last"][race])
+    	// Gnomes have a nickname
+    	} else if (race == "Gnome") {
+    		return this.getTrait(names["First"][race][sex]) + ` "${this.getTrait(names["First"]["GnomeNicknames"])}" ` + this.getTrait(names["Last"][race])
     	}
+    	
     	return this.getTrait(names["First"][race][sex]) + " " + this.getTrait(names["Last"][race])
     }
 
@@ -725,5 +808,7 @@ class NPC {
 }
 
 const foo = new NPC();
+
+document.querySelector("#name").innerHTML = foo.name;
 
 document.querySelector("#display").innerHTML = foo.toString();
