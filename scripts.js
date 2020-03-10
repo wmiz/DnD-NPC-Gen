@@ -38,7 +38,7 @@ const races = [
     "Gnome",
     "Half-Elf",
     "Half-Orc",
-    // "Tiefling"
+    "Tiefling"
 ]
 // TODO Populate names for all races
 const names = {
@@ -521,7 +521,63 @@ const names = {
 				"Shump", 
 				"Thokk"
 			]
-		}
+		},
+		Tiefling: {
+			Female: [
+				"Akta", 
+				"Anakis", 
+				"Bryseis", 
+				"Criella", 
+				"Damaia", 
+				"Ea", 
+				"Kallista", 
+				"Lerissa", 
+				"Makaria", 
+				"Nemeia", 
+				"Orianna", 
+				"Phelaia", 
+				"Rieta"
+			],
+			Male: [
+				"Akmenos", 
+				"Amnon", 
+				"Barakas", 
+				"Damakos", 
+				"Ekemon", 
+				"Iados", 
+				"Kairon", 
+				"Leucis", 
+				"Melech", 
+				"Mordai", 
+				"Morthos", 
+				"Pelaios", 
+				"Skamos", 
+				"Therai"
+			]
+		},
+		TieflingVirtue: [
+			"Art", 
+			"Carrion", 
+			"Chant", 
+			"Creed", 
+			"Despair", 
+			"Excellence", 
+			"Fear", 
+			"Glory", 
+			"Hope", 
+			"Ideal", 
+			"Music", 
+			"Nowhere", 
+			"Open", 
+			"Poetry", 
+			"Quest", 
+			"Random", 
+			"Reverence", 
+			"Sorrow", 
+			"Temerity", 
+			"Torment", 
+			"Weary"
+		]
 
 	},
 	Last: {
@@ -762,32 +818,38 @@ class NPC {
     getName(race, sex, age) {
     	// Young elves have different first names
     	if (race == "Elf" && age < 100) {
-    		return this.getTrait(names["First"]["Elfchild"]) + " " + this.getTrait(names["Last"][race])
+    		return this.getTrait(names["First"]["Elfchild"]) + " " + this.getTrait(names["Last"][race]);
 		// Young dragonborns have different first names
     	} else if (race == "Dragonborn" && age < 15) {
-    		return this.getTrait(names["First"]["Dragonbornchild"]) + " " + this.getTrait(names["Last"][race])
+    		return this.getTrait(names["First"]["Dragonbornchild"]) + " " + this.getTrait(names["Last"][race]);
     	// Gnomes have a nickname
     	} else if (race == "Gnome") {
-    		return this.getTrait(names["First"][race][sex]) + ` "${this.getTrait(names["First"]["GnomeNicknames"])}" ` + this.getTrait(names["Last"][race])
+    		return this.getTrait(names["First"][race][sex]) + ` "${this.getTrait(names["First"]["GnomeNicknames"])}" ` + this.getTrait(names["Last"][race]);
 		// Half elves take human or elf names
     	} else if (race == "Half-Elf") {
     		let coin = Math.floor(Math.random() * 2)
     		if (coin == 0) {
-    			return this.getTrait(names["First"]["Elf"][sex]) + " " + this.getTrait(names["Last"]["Elf"])
+    			return this.getTrait(names["First"]["Elf"][sex]) + " " + this.getTrait(names["Last"]["Elf"]);
     		} else {
-    			return this.getTrait(names["First"]["Human"][sex]) + " " + this.getTrait(names["Last"]["Human"])
+    			return this.getTrait(names["First"]["Human"][sex]) + " " + this.getTrait(names["Last"]["Human"]);
     		}
     	// Half orcs sometimes use human names and sometimes use orc names
     	} else if (race == "Half-Orc") {
     		let coin = Math.floor(Math.random() * 2)
     		if (coin == 0) {
-    			return this.getTrait(names["First"]["HalfOrc"][sex])
+    			return this.getTrait(names["First"]["HalfOrc"][sex]);
     		} else {
-    			return this.getTrait(names["First"]["Human"][sex]) + " " + this.getTrait(names["Last"]["Human"])
+    			return this.getTrait(names["First"]["Human"][sex]) + " " + this.getTrait(names["Last"]["Human"]);
     		}
+    	// Tieflings have "virtue" names at young age and only have first name
+    	} else if (race == "Tiefling") {
+    		if (age < 18) {
+    			return this.getTrait(names["First"]["TieflingVirtue"]);
+    		}
+    		return this.getTrait(names["First"][race][sex]);
     	}
     	
-    	return this.getTrait(names["First"][race][sex]) + " " + this.getTrait(names["Last"][race])
+    	return this.getTrait(names["First"][race][sex]) + " " + this.getTrait(names["Last"][race]);
     }
 
     getAbilities() {
