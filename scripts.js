@@ -36,8 +36,8 @@ const races = [
     "Human",
     "Dragonborn",
     "Gnome",
-    // "Half-Elf",
-    // "Half-Orc",
+    "Half-Elf",
+    "Half-Orc",
     // "Tiefling"
 ]
 // TODO Populate names for all races
@@ -491,6 +491,37 @@ const names = {
 			"Sparklegem", 
 			"Stumbleduck"
 		],
+		HalfOrc: {
+			Female: [
+				"Baggi", 
+				"Emen", 
+				"Engong", 
+				"Kansif", 
+				"Myev", 
+				"Neega", 
+				"Ovak", 
+				"Ownka", 
+				"Shautha", 
+				"Sutha", 
+				"Vola", 
+				"Volen", 
+				"Yevelda"
+			],
+			Male: [
+				"Dench", 
+				"Feng", 
+				"Gell", 
+				"Henk", 
+				"Holg", 
+				"Imsh", 
+				"Keth", 
+				"Krusk", 
+				"Mhurren", 
+				"Ront", 
+				"Shump", 
+				"Thokk"
+			]
+		}
 
 	},
 	Last: {
@@ -738,6 +769,22 @@ class NPC {
     	// Gnomes have a nickname
     	} else if (race == "Gnome") {
     		return this.getTrait(names["First"][race][sex]) + ` "${this.getTrait(names["First"]["GnomeNicknames"])}" ` + this.getTrait(names["Last"][race])
+		// Half elves take human or elf names
+    	} else if (race == "Half-Elf") {
+    		let coin = Math.floor(Math.random() * 2)
+    		if (coin == 0) {
+    			return this.getTrait(names["First"]["Elf"][sex]) + " " + this.getTrait(names["Last"]["Elf"])
+    		} else {
+    			return this.getTrait(names["First"]["Human"][sex]) + " " + this.getTrait(names["Last"]["Human"])
+    		}
+    	// Half orcs sometimes use human names and sometimes use orc names
+    	} else if (race == "Half-Orc") {
+    		let coin = Math.floor(Math.random() * 2)
+    		if (coin == 0) {
+    			return this.getTrait(names["First"]["HalfOrc"][sex])
+    		} else {
+    			return this.getTrait(names["First"]["Human"][sex]) + " " + this.getTrait(names["Last"]["Human"])
+    		}
     	}
     	
     	return this.getTrait(names["First"][race][sex]) + " " + this.getTrait(names["Last"][race])
