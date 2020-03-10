@@ -156,12 +156,39 @@ const abilities = {
 	
 }
 
+const talents = [
+	"Plays a musical instrument",
+	"Speaks several languages fluently",
+	"Unbelievably lucky",
+	"Has a perfect Memory",
+	"Is great with animals",
+	"Is great with children",
+	"Is Great at solving puzzles",
+	"Is great at dice",
+	"Is great at Dragonchess",
+	"Is great at playing cards",
+	"Is great at Three-Dragon Ante",
+	"Is great at impersonations",
+	"Draws beautifully",
+	"Paints beautifully",
+	"Sings beautifully",
+	"Can drink everyone under the table",
+	"Is an expert carpenter",
+	"Is an expert cook",
+	"Is an expert dart thrower and rock skipper",
+	"Is an expert juggler",
+	"Is a skilled actor and master of disguise",
+	"Is a skilled dancer",
+	"Knows thieves cant"
+
+]
+
 // Generates an NPC with the following traits:
-// Sex
-// Race
+// Sex *
+// Race *
 // Occupation and history
 // Appearance
-// Abilities
+// Abilities *
 // Talent
 // Mannerism
 // Interactions with others
@@ -176,6 +203,7 @@ class NPC {
         this.name = this.getName(this.race, this.sex)
         this.appearance = this.getAppearance();
         this.abilities = this.getAbilities();
+        this.talent = this.getTalent();
 	}
 
 	getAppearance() {
@@ -197,6 +225,11 @@ class NPC {
     getAbilities() {
     	return [this.getTrait(abilities["High"]), this.getTrait(abilities["Low"])]
     }
+
+    getTalent() {
+    	return this.getTrait(talents)
+    }
+
     getPronoun() {
     	if (this.sex == "Male") {
     		return "He"
@@ -206,7 +239,7 @@ class NPC {
     }
 
     toString() {
-    	let out = `${this.name} is a ${this.sex} ${this.race}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}.`
+    	let out = `${this.name} is a ${this.sex} ${this.race}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}. ${this.name} ${this.talent.toLowerCase()}.`
     	return out
     }
     
