@@ -2,19 +2,19 @@ const range = n => [...Array(n)].map((_, i) => i)
 
 const appearances = [
     ["Has a distinctive necklace on", "Has a distinctive ciriclet on", "Has a distinctive bracelet on"],
-    // `Has a ${} piercing`, // *** Bodyparts,
-    "Is wearing glamboyant or outlandish clothes",
+    "Has a piercing", // Bodyparts,
+    ["Is wearing flamboyant clothes", "Is wearing outlandish clothes"],
     "Is wearing formal, clean clothes",
     "Is wearing ragged, dirty clothes",
     "Has a prounounced scar", // Bodyparts,
-    `Is missing ${Math.floor(Math.random() * 32) + 1} teeth`,
+    "Is missing some teeth",
     `Is missing ${Math.floor(Math.random() * 11)} finger(s)`,
-    "Has an unusual eye color (or two different colors", // Unusual colors,
+    ["Has an unusual eye color", "Has two different eye colors"], // Unusual colors,
     "Is tattooed", //Bodyparts,
     "Has a birthmark", //Bodyparts,
     "Has an unusual skin color", // Unusual colors,
     "Is bald",
-    ['Has a braided beard', 'Has braided hair'], // "Braided beard or hair", // 1d2,
+    ['Has a braided beard', 'Has braided hair'],
     "Has an unusual hair color", // Unusual colors,
     "Has a nervous eye twitch" ,
     "Has a distinctive nose" ,
@@ -28,18 +28,19 @@ const sexes = [
     "Male"
 ]
 
+// TODO: Enable all races
 const races = [
     "Dwarf",
     "Elf",
-    // "Halfling",
-    // "Human",
+    "Halfling",
+    "Human",
     // "Dragonborn",
     // "Gnome",
     // "Half-Elf",
     // "Half-Orc",
     // "Tiefling"
 ]
-
+// TODO Populate names for all races
 const names = {
 	First: {
 		Dwarf: {
@@ -185,6 +186,198 @@ const names = {
 			"Thia", 
 			"Vall"
 		],
+		Halfling: {
+			Female: [
+				"Andry", 
+				"Bree", 
+				"Callie", 
+				"Cora", 
+				"Euphemia", 
+				"Jillian", 
+				"Kithri", 
+				"Lavinia", 
+				"Lidda", 
+				"Merla", 
+				"Nedda", 
+				"Paela", 
+				"Portia", 
+				"Seraphina", 
+				"Shaena", 
+				"Trym", 
+				"Vani", 
+				"Verna"
+			],
+			Male: [
+				"Alton", 
+				"Ander", 
+				"Cade", 
+				"Corrin", 
+				"Eldon", 
+				"Errich", 
+				"Finnan", 
+				"Garret", 
+				"Lindal", 
+				"Lyle", 
+				"Merric", 
+				"Milo", 
+				"Osborn", 
+				"Perrin", 
+				"Reed", 
+				"Roscoe", 
+				"Wellby"
+			]
+		},
+		Human: {
+			Female: [
+				"Atala", 
+				"Ceidil", 
+				"Hama", 
+				"Jasmal", 
+				"Meilil", 
+				"Seipora", 
+				"Yasheira", 
+				"Zasheida",
+				"Arveene", 
+				"Esvele", 
+				"Jhessail", 
+				"Kerri", 
+				"Lureene", 
+				"Miri", 
+				"Rowan", 
+				"Shandri", 
+				"Tessele",
+				"Alethra", 
+				"Kara", 
+				"Katernin", 
+				"Mara", 
+				"Natali", 
+				"Olma", 
+				"Tana", 
+				"Zora",
+				"Amafrey", 
+				"Betha", 
+				"Cefrey", 
+				"Kethra", 
+				"Mara", 
+				"Olga", 
+				"Silifrey", 
+				"Westra",
+				"Arizima", 
+				"Chathi", 
+				"Nephis", 
+				"Nulara", 
+				"Murithi", 
+				"Sefris", 
+				"Thola", 
+				"Umara", 
+				"Zolis",
+				"Fyevarra", 
+				"Hulmarra", 
+				"Immith", 
+				"Imzel", 
+				"Navarra", 
+				"Shevarra", 
+				"Tammith", 
+				"Yuldra",
+				"Bai", 
+				"Chao", 
+				"Jia", 
+				"Lei", 
+				"Mei", 
+				"Qiao", 
+				"Shui", 
+				"Tai",
+				"Balama", 
+				"Dona", 
+				"Faila", 
+				"Jalana", 
+				"Luisa", 
+				"Marta", 
+				"Quara", 
+				"Selise", 
+				"Vonda"
+			],
+			Male: [
+				"Aseir", 
+				"Bardeid", 
+				"Haseid", 
+				"Khemed", 
+				"Mehmen", 
+				"Sudeiman", 
+				"Zasheir",
+				"Darvin", 
+				"Dorn", 
+				"Evendur", 
+				"Gorstag", 
+				"Grim", 
+				"Helm", 
+				"Malark", 
+				"Morn", 
+				"Randal", 
+				"Stedd",
+				"Bor", 
+				"Fodel", 
+				"Glar", 
+				"Grigor", 
+				"Igan", 
+				"Ivor", 
+				"Kosef", 
+				"Mival", 
+				"Orel", 
+				"Pavel", 
+				"Sergor",
+				"Ander", 
+				"Blath", 
+				"Bran", 
+				"Frath", 
+				"Geth", 
+				"Lander", 
+				"Luth", 
+				"Malcer", 
+				"Stor", 
+				"Taman", 
+				"Urth",
+				"Aoth", 
+				"Bareris", 
+				"Ehput-Ki", 
+				"Kethoth", 
+				"Mumed", 
+				"Ramas", 
+				"So-Kehur", 
+				"Thazar-De", 
+				"Urhur",
+				"Borivik", 
+				"Faurgar", 
+				"Jandar", 
+				"Kanithar", 
+				"Madislak", 
+				"Ralmevik", 
+				"Shaumar", 
+				"Vladislak",
+				"An", 
+				"Chen", 
+				"Chi", 
+				"Fai", 
+				"Jiang", 
+				"Jun", 
+				"Lian", 
+				"Long", 
+				"Meng", 
+				"On", 
+				"Shan", 
+				"Shui", 
+				"Wen",
+				"Anton", 
+				"Diero", 
+				"Marcon", 
+				"Pieron", 
+				"Rimardo", 
+				"Romero", 
+				"Salazar", 
+				"Umbero"
+			]
+		},
+
 	},
 	Last: {
 		Dwarf: [
@@ -215,6 +408,80 @@ const names = {
 			"Naïlo (Nightbreeze)", 
 			"Siannodel (Moonbrook)", 
 			"Xiloscient (Goldpetal)"
+		],
+		Halfling: [
+			"Brushgather", 
+			"Goodbarrel", 
+			"Greenbottle", 
+			"High-hill", 
+			"Hilltopple", 
+			"Leagallow", 
+			"Tealeaf", 
+			"Thorngage", 
+			"Tosscobble", 
+			"Underbough"
+		],
+		Human: [
+			"Basha", 
+			"Dumein", 
+			"Jassan", 
+			"Khalid", 
+			"Mostana", 
+			"Pashar", 
+			"Rein",
+			"Amblecrown", 
+			"Buckman", 
+			"Dundragon", 
+			"Evenwood", 
+			"Greycastle", 
+			"Tallstag",
+			"Bersk", 
+			"Chernin", 
+			"Dotsk", 
+			"Kulenov", 
+			"Marsk", 
+			"Nemetsk", 
+			"Shemov", 
+			"Starag",
+			"Brightwood", 
+			"Helder", 
+			"Hornraven", 
+			"Lackman", 
+			"Stormwind", 
+			"Windrivver",
+			"Ankhalab", 
+			"Anskuld", 
+			"Fezim", 
+			"Hahpet", 
+			"Nathandem", 
+			"Sepret", 
+			"Uuthrakt",
+			"Chergoba", 
+			"Dyernina", 
+			"Iltazyara", 
+			"Murnyethara", 
+			"Stayanoga", 
+			"Ulmokina",
+			"Chien", 
+			"Huang", 
+			"Kao", 
+			"Kung", 
+			"Lao", 
+			"Ling", 
+			"Mei", 
+			"Pin", 
+			"Shin", 
+			"Sum", 
+			"Tan", 
+			"Wan",
+			"Agosto", 
+			"Astorio", 
+			"Calabra", 
+			"Domine", 
+			"Falone", 
+			"Marivaldi", 
+			"Pisacar", 
+			"Ramondo"
 		]
 	}
 
@@ -276,16 +543,17 @@ const talents = [
 ]
 
 // Generates an NPC with the following traits:
+// Name *
 // Sex *
-// Race *
+// Race 
 // Age *
 // Occupation and history
-// Appearance
+// Appearance *
 // Abilities *
 // Talent *
 // Mannerism
 // Interactions with others
-// Useful Knowlege ***
+// Useful Knowlege 
 // Ideal
 // Bond
 // Flaw or secret
@@ -322,7 +590,14 @@ class NPC {
     }
 
     getAbilities() {
-    	return [this.getTrait(abilities["High"]), this.getTrait(abilities["Low"])]
+    	let highTrait = 0;
+    	let lowTrait = 0;
+    	while (highTrait == lowTrait) {
+	    	highTrait = Math.floor(Math.random() * 6);
+	    	lowTrait = Math.floor(Math.random() * 6);
+	    }
+
+    	return [this.getTrait(abilities["High"][highTrait]), this.getTrait(abilities["Low"][lowTrait])]
     }
 
     getTalent() {
@@ -362,7 +637,7 @@ class NPC {
     }
 
     toString() {
-    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.name.split(' ')[0]} ${this.getAppearance().toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}.`
+    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.name.split(' ')[0]} ${this.getAppearance().toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. ${this.getPronoun()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}.`
     	return out
     }
     
@@ -379,6 +654,5 @@ class NPC {
 }
 
 const foo = new NPC();
-console.log(foo.toString());
 
 document.querySelector("#display").innerHTML = foo.toString();
