@@ -30,7 +30,7 @@ const sexes = [
 
 const races = [
     "Dwarf",
-    // "Elf",
+    "Elf",
     // "Halfling",
     // "Human",
     // "Dragonborn",
@@ -100,6 +100,71 @@ const names = {
 				"Veit", 
 				"Vondal"
 			]
+		},
+		Elf: {
+			Female: [
+				"Adrie",
+				"Althaea", 
+				"Anastrianna", 
+				"Andraste", 
+				"Antinua", 
+				"Bethrynna", 
+				"Birel", 
+				"Caelynn", 
+				"Drusilia", 
+				"Enna", 
+				"Felosial", 
+				"Ielenia", 
+				"Jelenneth", 
+				"Keyleth", 
+				"Leshanna", 
+				"Lia", 
+				"Meriele", 
+				"Mialee", 
+				"Naivara", 
+				"Quelenna", 
+				"Quillathe", 
+				"Sariel", 
+				"Shanairra", 
+				"Shava", 
+				"Silaqui", 
+				"Theirastra", 
+				"Thia", 
+				"Vadania", 
+				"Valanthe", 
+				"Xanaphia"
+			],
+			Male: [
+				"Adran", 
+				"Aelar", 
+				"Aramil", 
+				"Arannis", 
+				"Aust", 
+				"Beiro", 
+				"Berrian", 
+				"Carric", 
+				"Enialis", 
+				"Erdan", 
+				"Erevan", 
+				"Galinndan", 
+				"Hadarai", 
+				"Heian", 
+				"Himo", 
+				"Immeral", 
+				"Ivellios", 
+				"Laucian", 
+				"Mindartis", 
+				"Paelias", 
+				"Peren", 
+				"Quarion", 
+				"Riardon", 
+				"Rolen", 
+				"Soveliss", 
+				"Thamior", 
+				"Tharivol", 
+				"Theren", 
+				"Varis"
+			]
 		}
 	},
 	Last: {
@@ -119,6 +184,18 @@ const names = {
 			"Strakeln", 
 			"Torunn", 
 			"Ungart"
+		],
+		Elf: [
+			"Amakiir (Gemflower)", 
+			"Amastacia (Starflower)", 
+			"Galanodel (Moonwhisper)", 
+			"Holimion (Diamonddew)", 
+			"Ilphelkiir (Gemblossom)", 
+			"Liadon (Silverfrond)", 
+			"Meliamne (Oakenheel)", 
+			"Naïlo (Nightbreeze)", 
+			"Siannodel (Moonbrook)", 
+			"Xiloscient (Goldpetal)"
 		]
 	}
 
@@ -262,7 +339,7 @@ class NPC {
     }
 
     toString() {
-    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}. ${this.name} ${this.talent.toLowerCase()}.`
+    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}.`
     	return out
     }
     
