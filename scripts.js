@@ -1,26 +1,26 @@
 const range = n => [...Array(n)].map((_, i) => i)
 
 const appearances = [
-    ["a distinctive necklace", "a distinctive ciriclet", "a distinctive bracelet"],
-    "a piercing on", // *** Bodyparts,
-    "Flamboyant or outlandish clothes",
-    "Formal, clean clothes",
-    "Ragged, dirty clothes",
-    "Prounounced scar", // Bodyparts,
-    // range(32).map(),// "Missing Teeth", // 1d32,
-    "Missing fingers", // 1d10,
-    "Unusual eye color (or two different colors", // Unusual colors,
-    "Tattoos", //Bodyparts,
-    "Birthmark", //Bodyparts,
-    "Unusual skin color", // Unusual colors,
-    "Bald",
-    ['Braided beard', 'Braided hair'], // "Braided beard or hair", // 1d2,
-    "Unusual hair color", // Unusual colors,
-    "Nervous eye twitch" ,
-    "Distinctive nose" ,
-    ["Crooked posture", "Rigid posture"],
-    "Exceptionally beautiful",
-    "Exceptionally ugly"
+    ["Has a distinctive necklace on", "Has a distinctive ciriclet on", "Has a distinctive bracelet on"],
+    // `Has a ${} piercing`, // *** Bodyparts,
+    "Is wearing glamboyant or outlandish clothes",
+    "Is wearing formal, clean clothes",
+    "Is wearing ragged, dirty clothes",
+    "Has a prounounced scar", // Bodyparts,
+    `Is missing ${Math.floor(Math.random() * 32) + 1} teeth`,
+    `Is missing ${Math.floor(Math.random() * 11)} finger(s)`,
+    "Has an unusual eye color (or two different colors", // Unusual colors,
+    "Is tattooed", //Bodyparts,
+    "Has a birthmark", //Bodyparts,
+    "Has an unusual skin color", // Unusual colors,
+    "Is bald",
+    ['Has a braided beard', 'Has braided hair'], // "Braided beard or hair", // 1d2,
+    "Has an unusual hair color", // Unusual colors,
+    "Has a nervous eye twitch" ,
+    "Has a distinctive nose" ,
+    ["Has crooked posture", "Has rigid posture"],
+    "Is exceptionally beautiful",
+    "Is exceptionally ugly"
 ]
 
 const sexes = [
@@ -255,8 +255,8 @@ const abilities = {
 const talents = [
 	["Plays the bagpipes", "Plays the drums", "Plays the dulcimer", "Plays the flute", "Plays the lute", "Plays the lyre", "Plays the horn", "Plays the pan flute", "Plays the shawm", "Plays the viol"],
 	"Speaks several languages fluently",
-	"Unbelievably lucky",
-	"Has a perfect Memory",
+	"Is unbelievably lucky",
+	"Has a perfect memory",
 	"Is great with animals",
 	"Is great with children",
 	"Is great at solving puzzles",
@@ -314,6 +314,7 @@ class NPC {
     }
 
     getName(race, sex, age) {
+    	// Young elves have different first names
     	if (race == "Elf" && age < 100) {
     		return this.getTrait(names["First"]["Elfchild"]) + " " + this.getTrait(names["Last"][race])
     	}
@@ -361,7 +362,7 @@ class NPC {
     }
 
     toString() {
-    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}.`
+    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.name.split(' ')[0]} ${this.getAppearance().toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}.`
     	return out
     }
     
