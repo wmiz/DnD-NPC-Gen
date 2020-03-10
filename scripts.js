@@ -34,7 +34,7 @@ const races = [
     "Elf",
     "Halfling",
     "Human",
-    // "Dragonborn",
+    "Dragonborn",
     // "Gnome",
     // "Half-Elf",
     // "Half-Orc",
@@ -377,6 +377,54 @@ const names = {
 				"Umbero"
 			]
 		},
+		Dragonborn: {
+			Female: [
+				"Akra", 
+				"Biri", 
+				"Daar", 
+				"Farideh", 
+				"Harann", 
+				"Havilar", 
+				"Jheri", 
+				"Kava", 
+				"Korinn", 
+				"Mishann", 
+				"Nala", 
+				"Perra", 
+				"Raiann", 
+				"Sora", 
+				"Surina", 
+				"Thava", 
+				"Uadjit"
+			],
+			Male: [
+				"Arjhan", 
+				"Balasar", 
+				"Bharash", 
+				"Donaar", 
+				"Ghesh", 
+				"Heskan", 
+				"Kriv", 
+				"Medrash", 
+				"Mehen", 
+				"Nadarr", 
+				"Pandjed", 
+				"Patrin", 
+				"Rhogar", 
+				"Shamash", 
+				"Shedinn", 
+				"Tarhun", 
+				"Torinn"
+			]
+		},
+		Dragonbornchild: [
+			"Climber", 
+			"Earbender", 
+			"Leaper", 
+			"Pious", 
+			"Shieldbiter", 
+			"Zealous"
+		]
 
 	},
 	Last: {
@@ -482,6 +530,26 @@ const names = {
 			"Marivaldi", 
 			"Pisacar", 
 			"Ramondo"
+		],
+		Dragonborn: [
+			"Clethtinthiallor", 
+			"Daardendrian", 
+			"Delmirev", 
+			"Drachedandion", 
+			"Fenkenkabradon", 
+			"Kepeshkmolik", 
+			"Kerrhylon", 
+			"Kimbatuul", 
+			"Linxakasendalor", 
+			"Myastan", 
+			"Nemmonis", 
+			"Norixius", 
+			"Ophinshtalajiir", 
+			"Prexijandilin", 
+			"Shestendeliath", 
+			"Turnuroth", 
+			"Verthisathurgiesh", 
+			"Yarjerit"
 		]
 	}
 
@@ -543,7 +611,7 @@ const talents = [
 ]
 
 // Generates an NPC with the following traits:
-// Name *
+// Name
 // Sex *
 // Race 
 // Age *
@@ -585,6 +653,9 @@ class NPC {
     	// Young elves have different first names
     	if (race == "Elf" && age < 100) {
     		return this.getTrait(names["First"]["Elfchild"]) + " " + this.getTrait(names["Last"][race])
+		// Young dragonborns have different first names
+    	} else if (race == "Dragonborn" && age < 15) {
+    		return this.getTrait(names["First"]["Dragonbornchild"]) + " " + this.getTrait(names["Last"][race])
     	}
     	return this.getTrait(names["First"][race][sex]) + " " + this.getTrait(names["Last"][race])
     }
