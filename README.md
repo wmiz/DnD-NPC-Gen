@@ -24,6 +24,7 @@ Will generate the following NPC traits:
 * Ideal
 * Bond
 * Flaw or secret
+
 Provide UI for creating and modifying new NPCs. 
 
 ## How to Use?
