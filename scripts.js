@@ -253,7 +253,7 @@ const abilities = {
 }
 
 const talents = [
-	"Plays a musical instrument",
+	["Plays the bagpipes", "Plays the drums", "Plays the dulcimer", "Plays the flute", "Plays the lute", "Plays the lyre", "Plays the horn", "Plays the pan flute", "Plays the shawm", "Plays the viol"],
 	"Speaks several languages fluently",
 	"Unbelievably lucky",
 	"Has a perfect Memory",
