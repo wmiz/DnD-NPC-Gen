@@ -165,7 +165,26 @@ const names = {
 				"Theren", 
 				"Varis"
 			]
-		}
+		},
+		Elfchild: [
+			"Ara",
+			"Bryn", 
+			"Del", 
+			"Eryn", 
+			"Faen", 
+			"Innil", 
+			"Lael", 
+			"Mella", 
+			"Naill", 
+			"Naeris", 
+			"Phann", 
+			"Rael", 
+			"Rinn", 
+			"Sai", 
+			"Syllin", 
+			"Thia", 
+			"Vall"
+		],
 	},
 	Last: {
 		Dwarf: [
@@ -275,8 +294,8 @@ class NPC {
 	constructor() {
         this.sex = this.getSex();
         this.race = this.getRace();
-        this.name = this.getName(this.race, this.sex)
         this.age = this.getAge(this.race)
+        this.name = this.getName(this.race, this.sex, this.age)
         this.appearance = this.getAppearance();
         this.abilities = this.getAbilities();
         this.talent = this.getTalent();
@@ -294,7 +313,10 @@ class NPC {
         return this.getTrait(races);
     }
 
-    getName(race, sex) {
+    getName(race, sex, age) {
+    	if (race == "Elf" && age < 100) {
+    		return this.getTrait(names["First"]["Elfchild"]) + " " + this.getTrait(names["Last"][race])
+    	}
     	return this.getTrait(names["First"][race][sex]) + " " + this.getTrait(names["Last"][race])
     }
 
