@@ -163,11 +163,8 @@ const talents = [
 	"Has a perfect Memory",
 	"Is great with animals",
 	"Is great with children",
-	"Is Great at solving puzzles",
-	"Is great at dice",
-	"Is great at Dragonchess",
-	"Is great at playing cards",
-	"Is great at Three-Dragon Ante",
+	"Is great at solving puzzles",
+	["Is great at dice", "Is great at Dragonchess", "Is great at playing cards", "Is great at Three-Dragon Ante"],
 	"Is great at impersonations",
 	"Draws beautifully",
 	"Paints beautifully",
@@ -180,18 +177,19 @@ const talents = [
 	"Is a skilled actor and master of disguise",
 	"Is a skilled dancer",
 	"Knows thieves cant"
-
 ]
 
 // Generates an NPC with the following traits:
 // Sex *
 // Race *
+// Age *
 // Occupation and history
 // Appearance
 // Abilities *
-// Talent
+// Talent *
 // Mannerism
 // Interactions with others
+// Useful Knowlege ***
 // Ideal
 // Bond
 // Flaw or secret
@@ -201,6 +199,7 @@ class NPC {
         this.sex = this.getSex();
         this.race = this.getRace();
         this.name = this.getName(this.race, this.sex)
+        this.age = this.getAge(this.race)
         this.appearance = this.getAppearance();
         this.abilities = this.getAbilities();
         this.talent = this.getTalent();
@@ -230,6 +229,30 @@ class NPC {
     	return this.getTrait(talents)
     }
 
+    getAge(race) {
+    	let age;
+    	if (race == "Dwarf") {
+    		age = Math.floor(Math.random() * 351);
+    	} else if (race == "Elf") {
+    		age = Math.floor(Math.random() * 751);
+    	} else if (race == "Halfling") {
+    		age = Math.floor(Math.random() * 151);
+    	} else if (race == "Human") {
+    		age = Math.floor(Math.random() * 101);
+    	} else if (race == "Dragonborn") {
+    		age = Math.floor(Math.random() * 81);
+    	} else if (race == "Gnome") {
+    		age = Math.floor(Math.random() * 500);
+    	} else if (race == "Half-Elf") {
+    		age = Math.floor(Math.random() * 182);
+    	} else if (race == "Half-Orc") {
+    		age = Math.floor(Math.random() * 76);
+    	} else if (race == "Tiefling") {
+    		age = Math.floor(Math.random() * 104);
+    	}
+    	return age;
+    }
+
     getPronoun() {
     	if (this.sex == "Male") {
     		return "He"
@@ -239,7 +262,7 @@ class NPC {
     }
 
     toString() {
-    	let out = `${this.name} is a ${this.sex} ${this.race}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}. ${this.name} ${this.talent.toLowerCase()}.`
+    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. However, ${this.getPronoun().toLowerCase()} is also ${this.abilities[1].toLowerCase()}. ${this.name} ${this.talent.toLowerCase()}.`
     	return out
     }
     
@@ -257,3 +280,5 @@ class NPC {
 
 const foo = new NPC();
 console.log(foo.toString());
+
+document.querySelector("#display").innerHTML = foo.toString();
