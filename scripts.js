@@ -28,7 +28,6 @@ const sexes = [
     "Male"
 ]
 
-// TODO: Enable all races
 const races = [
     "Dwarf",
     "Elf",
@@ -40,7 +39,7 @@ const races = [
     "Half-Orc",
     "Tiefling"
 ]
-// TODO Populate names for all races
+
 const names = {
 	First: {
 		Dwarf: {
@@ -776,21 +775,44 @@ const talents = [
 	"Knows thieves cant"
 ]
 
+const mannerisms = [
+	["Is prone to singing quietly", "Is prone to humming quietly", "Is prone to whistling quietly"],
+	["Speaks in rhyme", "Speaks in a distinctive way"],
+	["Has a particularly low voice", "Has a particularly high voice"],
+	["Slurs words", "Has a lisp", "Stutters"],
+	"Enunciates overly clearly",
+	"Speaks loudly",
+	"Whispers",
+	["Uses flowery speech", "Uses long words"],
+	"Frequently uses the wrong word in place of another",
+	["Uses colorful oaths", "Uses colorful exclamations"],
+	["Makes constant jokes", "Makes constant puns"],
+	"Is prone to predictions of doom",
+	"Often fidgets",
+	"Often squints",
+	"Often stares into the distance",
+	"Often chews on something",
+	"Often paces",
+	"Is prone to finger tapping",
+	"Is prone to fingernail biting",
+	["Often twirls hair", "Often tugs beard"]
+]
+
 // Generates an NPC with the following traits:
-// Name
-// Sex *
-// Race 
-// Age *
-// Occupation and history
-// Appearance *
-// Abilities *
-// Talent *
-// Mannerism
-// Interactions with others
-// Useful Knowlege 
-// Ideal
-// Bond
-// Flaw or secret
+	// Name *
+	// Sex *
+	// Race *
+	// Age *
+	// Occupation and history
+	// Appearance *
+	// Abilities *
+	// Talent *
+	// Mannerism
+	// Interactions with others
+	// Useful Knowlege 
+	// Ideal
+	// Bond
+	// Flaw or secret
 
 class NPC {
 	constructor() {
@@ -801,6 +823,7 @@ class NPC {
         this.appearance = this.getAppearance();
         this.abilities = this.getAbilities();
         this.talent = this.getTalent();
+        this.mannerism = this.getMannerism();
 	}
 
 	getAppearance() {
@@ -899,8 +922,12 @@ class NPC {
     	}
     }
 
+    getMannerism() {
+    	return this.getTrait(mannerisms)
+    }
+
     toString() {
-    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.name.split(' ')[0]} ${this.getAppearance().toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. ${this.getPronoun()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}.`
+    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.name.split(' ')[0]} ${this.getAppearance().toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. ${this.getPronoun()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}. ${this.getPronoun()} ${this.mannerism.toLowerCase()}.`
     	return out
     }
     
