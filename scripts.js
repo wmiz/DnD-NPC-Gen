@@ -798,6 +798,21 @@ const mannerisms = [
 	["Often twirls hair", "Often tugs beard"]
 ]
 
+const interactions = [
+	"Argumentative",
+	"Arrogant",
+	"Blustering",
+	"Rude",
+	"Curious",
+	"Friendly",
+	"Honest",
+	"Hot tempered",
+	"Irritable",
+	"Ponderous",
+	"Quiet",
+	"Suspicious"
+]
+
 // Generates an NPC with the following traits:
 	// Name *
 	// Sex *
@@ -824,6 +839,7 @@ class NPC {
         this.abilities = this.getAbilities();
         this.talent = this.getTalent();
         this.mannerism = this.getMannerism();
+        this.interaction = this.getInteraction();
 	}
 
 	getAppearance() {
@@ -923,11 +939,15 @@ class NPC {
     }
 
     getMannerism() {
-    	return this.getTrait(mannerisms)
+    	return this.getTrait(mannerisms);
+    }
+
+    getInteraction() {
+    	return this.getTrait(interactions);
     }
 
     toString() {
-    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.name.split(' ')[0]} ${this.getAppearance().toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. ${this.getPronoun()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}. ${this.getPronoun()} ${this.mannerism.toLowerCase()}.`
+    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.name.split(' ')[0]} ${this.getAppearance().toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. ${this.getPronoun()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}. ${this.getPronoun()} ${this.mannerism.toLowerCase()}. When interacting with others, ${this.name.split(' ')[0]} tends to be ${this.interaction.toLowerCase()}.`
     	return out
     }
     
