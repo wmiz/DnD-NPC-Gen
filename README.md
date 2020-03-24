@@ -14,16 +14,16 @@ Generates the following NPC traits:
 * Appearance
 * High and low abilities
 * Talents
+* Mannerisms
+* Interactions with others
+* Ideals
+* Bonds
+* Flaws
 
 ### Future
 Will generate the following NPC traits:
 * Occupation and history
-* Mannerisms
-* Interaction with others
 * Useful knowledge
-* Ideal
-* Bond
-* Flaw or secret
 
 Provide UI for creating and modifying new NPCs. 
 
@@ -33,4 +33,4 @@ Provide UI for creating and modifying new NPCs.
 Refresh the page to generate new NPCs.
 
 ## Credits
-Thanks to Wizards of the Coast for publishing great source material.
+Thanks to Wizards of the Coast for publishing the great source material.
