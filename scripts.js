@@ -813,6 +813,78 @@ const interactions = [
 	"Suspicious"
 ]
 
+const ideals = {
+	Good: [
+	"Beauty",
+	"Charity",
+	"Greater good",
+	"Life",
+	"Respect",
+	"Self-sacrifice"],
+	Lawful: [
+	"Community",
+	"Fairness",
+	"Honor",
+	"Logic",
+	"Responsibility",
+	"Tradition"],
+	Neutral: [
+	"Balance",
+	"Knowledge",
+	"Live and let live",
+	"Moderation",
+	"Neutrality",
+	"People"],
+	Evil: [
+	"Domination",
+	"Greed",
+	"Might",
+	"Pain",
+	"Retribution",
+	"Slaughter"],
+	Chaotic: [
+	"Change",
+	"Creativity",
+	"Freedom",
+	"Independence",
+	"No limits",
+	"Whimsy"],
+	Other: [
+	"Aspiration",
+	"Discovery",
+	"Glory",
+	"Nation",
+	"Redemption",
+	"Self-knowledge"]
+}
+
+const bonds = [
+	"Dedicated to fulfilling a personal life goal",
+	"Protective of close family members",
+	["Protective of colleagues", "Protective of compatriots"],
+	["Loyal to a benefactor", "Loyal to a patron", "Loyal to an employer"],
+	"Captivated by a romantic interest",
+	"Drawn to a special place",
+	"Protective of a sentimental keepsake",
+	"Protective of a valuable possession",
+	"Out for revenge"
+]
+
+const flaws = [
+	["Has a forbidden love", "Has a succeptibility to romance"],
+	"Enjoys decadent pleasures",
+	"Is quite arrogant",
+	["Envies another creature's possesions", "Envies another creature's station"],
+	"Has overpowering greed",
+	"Is prone to rage",
+	"Has a powerful enemy",
+	"Has a specific phobia",
+	["Has a shameful history", "Has a scandalous history"],
+	["Has commited a secret crime", "Has commited a secret misdeed"],
+	"Owns a possession of forbidden lore",
+	"Engages in foolhardy bravery"
+]
+
 // Generates an NPC with the following traits:
 	// Name *
 	// Sex *
@@ -822,12 +894,12 @@ const interactions = [
 	// Appearance *
 	// Abilities *
 	// Talent *
-	// Mannerism
-	// Interactions with others
+	// Mannerism *
+	// Interactions with others *
 	// Useful Knowlege 
-	// Ideal
-	// Bond
-	// Flaw or secret
+	// Ideal *
+	// Bond *
+	// Flaw or secret *
 
 class NPC {
 	constructor() {
@@ -840,6 +912,17 @@ class NPC {
         this.talent = this.getTalent();
         this.mannerism = this.getMannerism();
         this.interaction = this.getInteraction();
+        this.ideal = this.getIdeal();
+        this.bond = this.getBond();
+        this.flaw = this.getFlaw();
+	}
+
+	getFlaw() {
+		return this.getTrait(flaws);
+	}
+
+	getBond() {
+		return this.getTrait(bonds);
 	}
 
 	getAppearance() {
@@ -852,6 +935,12 @@ class NPC {
 
     getRace() {
         return this.getTrait(races);
+    }
+
+    getIdeal() {
+    	let keys = Object.keys(ideals);
+    	let rand = ideals[keys[keys.length * Math.random() << 0]]
+    	return this.getTrait(rand);
     }
 
     getName(race, sex, age) {
@@ -947,7 +1036,7 @@ class NPC {
     }
 
     toString() {
-    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.name.split(' ')[0]} ${this.getAppearance().toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. ${this.getPronoun()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}. ${this.getPronoun()} ${this.mannerism.toLowerCase()}. When interacting with others, ${this.name.split(' ')[0]} tends to be ${this.interaction.toLowerCase()}.`
+    	let out = `${this.name} is a ${this.age} year old ${this.sex.toLowerCase()} ${this.race.toLowerCase()}. ${this.name.split(' ')[0]} ${this.getAppearance().toLowerCase()}. ${this.getPronoun()} is ${this.abilities[0].toLowerCase()}. ${this.getPronoun()} is also ${this.abilities[1].toLowerCase()}. ${this.name.split(' ')[0]} ${this.talent.toLowerCase()}. ${this.getPronoun()} ${this.mannerism.toLowerCase()}. When interacting with others, ${this.name.split(' ')[0]} tends to be ${this.interaction.toLowerCase()}. ${this.name.split(' ')[0]} holds the ideal of ${this.ideal.toLowerCase()}. ${this.name.split(' ')[0]} is ${this.bond.toLowerCase()}. ${this.name.split(' ')[0]} ${this.flaw.toLowerCase()}.`
     	return out
     }
     
